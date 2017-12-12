@@ -118,9 +118,20 @@ void drawButton()
 
 void mousePressed()
 {
-  if (mouseX > width - border && mouseX < width - border/2.0f && mouseY > height - border/2.0f && mouseY < height - border/4.0f)
+  //if (mouseX > width - border && mouseX < width - border/2.0f && mouseY > height - border/2.0f && mouseY < height - border/4.0f)
+  //{
+  //  space = true;
+  //  sound.play();
+  //}
+  if (mouseX > width - (width/3.0f) && mouseX < width && mouseY > height - border && mouseY < height - border/2.0f)
   {
     space = true;
+    sound.play();
+  }
+  
+  if (mouseX > width - (width/3.0f) && mouseX < width && mouseY > height - border/2.0f && mouseY < height)
+  {
+    space = false;
     sound.play();
   }
 }
