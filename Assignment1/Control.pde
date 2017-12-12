@@ -61,7 +61,7 @@ class Control
     
   void targetdisplay()
   {   
-    strokeWeight(3);
+    //strokeWeight(3);
     stroke(255, 0, 0);    
     line(lx-10, ly, lx+10, ly);
     line(lx, ly-10, lx, ly+10);
@@ -189,9 +189,10 @@ class Control
            
   void shipdisplay()
   {
+    textAlign(CENTER, CENTER);
     textSize(15);
-    text("Coordinate x of ship =  " + int(location.x), width - border*2.5f, border/4.0f);
-    text("Coordinate y of ship =  " + int(location.y), width - border*2.5f, border/2.5f);
+    text("Coordinate x of ship =  " + int(location.x), width/2.0f, height - border/1.5f);
+    text("Coordinate y of ship =  " + int(location.y), width/2.0f, height - border/2.5f);
    }
    
   void mapdisplay()

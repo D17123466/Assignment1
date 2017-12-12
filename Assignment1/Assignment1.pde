@@ -22,8 +22,8 @@ SoundFile takeOff;
 
 void setup()
 {
-  size(600, 600);
-  //fullScreen();
+  //size(600, 600);
+  fullScreen();
  
   for (int i = 0; i < qtyStar; i ++)
   {
