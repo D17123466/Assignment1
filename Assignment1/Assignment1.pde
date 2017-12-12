@@ -10,9 +10,15 @@ boolean keys[] = new boolean[1024];
 
 Control control;
 
+// check ship take-off / landing
 boolean space = false;
 
-SoundFile sound; 
+// check take-off / landing button
+boolean Bcol = true;
+
+// sound files
+SoundFile landing; 
+SoundFile takeOff; 
 
 void setup()
 {
@@ -24,18 +30,19 @@ void setup()
     myStar[i] = new Star(border);
   }
   
-  radar = new Radar(width / 2, height - (border/2));
+  radar = new Radar(width/6.0f, height - border/2.0f);
   
   control = new Control(border);
   
-  sound = new SoundFile(this, "UFO.mp3");
+  landing = new SoundFile(this, "UFOLanding.mp3");
+  takeOff = new SoundFile(this, "UFOTakeOff.mp3");
 }
 
 void draw()
 {
   background(0);
-  stroke(0, 255, 0);
-  fill(255);
+  //stroke(0, 255, 0);
+  //fill(255);
 
 
   if (space == true)
@@ -46,15 +53,17 @@ void draw()
     control.shipdisplay();
     control.update();
     control.mapdisplay();
+    radar.render();
+    radar.update();
   }
   
   //drawGrid();
   drawAbove();
   drawBelow();
-  drawButton();
+  drawShipButton();
   
-  radar.render();
-  radar.update();
+  //radar.render();
+  //radar.update();
   
   for (int i = 0; i < qtyStar; i ++)
   {
@@ -62,25 +71,18 @@ void draw()
     myStar[i].move();
   }
   
-  if (space == true)
-  {
-    control.targetPoint();
-    control.targetdisplay();
-    control.shipdisplay();
-    control.update();
-    control.mapdisplay();
-  }
-  
 }
 
 void drawGrid()
 {
+  stroke(0, 255, 0, 20);
+  //strokeWeight(2);
   line(0, height - border, width, height - border);
   
-  for(int xg = 0 ; xg <= 5 ; xg ++)
+  for(int xg = 0 ; xg <= 10 ; xg ++)
   {
-    float xpos = map(xg, 0, 5, 0, width);
-    float ypos = map(xg, 0, 5, border / 2, height - border);
+    float xpos = map(xg, 0, 10, 0, width);
+    float ypos = map(xg, 0, 10, border / 2, height - border);
     
     line(0, ypos, width, ypos);
     line(xpos, border / 2, xpos, height - border);   
@@ -89,15 +91,15 @@ void drawGrid()
 
 void drawAbove()
 {
-  stroke(255);
-  strokeWeight(1);
+  stroke(0, 255, 0);
+  strokeWeight(2);
   fill(0, 255, 0, 20);
   rect(0, 0, width, border / 2);
 }
 
 void drawBelow()
 {
-  stroke(255);
+  stroke(0, 255, 0);
   //strokeWeight(1);
   fill(0, 255, 0, 20);
   
@@ -112,19 +114,35 @@ void drawBelow()
   }
 }
 
-void drawButton()
+void drawShipButton()
 {
-  ////stroke(255);
-  //fill(0, 255, 0);
-  //rect(width - border, height - border/2.0f, width - border/2.0f, height - border/4.0f);
-  //fill(255);
-  ////textAlign(CENTER, CENTER);
-  //text("Ship", (width - border/1.3f), (height - border/4.0f) - 15 );
+  textAlign(CENTER);
+  //strokeWeight(3);
+  textSize(15);
+  fill(0, 255, 0);
+  text("TakeOff", width - width/6.0f, height - border/1.5f);
+  text("Landing", width - width/6.0f, height - border/4.0f);
   
-  fill(0, 255, 0, 20);
-  rect(width - width/3.0f, height - border, width, height);
-  stroke(255);
+  if (Bcol)
+  {
+    fill(0, 255, 0, 20);
+    rect(width - width/3.0f, height - border, width, height - border/2.0f);
+    fill(255, 0, 0, 20);
+    rect(width - width/3.0f, height - border/2.0f, width, height);
+  }
+  else
+  {
+    fill(255, 0, 0, 20);
+    rect(width - width/3.0f, height - border, width, height - border/2.0f);
+    fill(0, 255, 0, 20);
+    rect(width - width/3.0f, height - border/2.0f, width, height);
+  }
+  
+  //rect(width - width/3.0f, height - border, width, height);
+  
+  stroke(0, 255, 0);
   line(width - (width/3.0f), height - border/2.0f, width, height - border/2.0f);
+  
 }
 
 void mousePressed()
@@ -137,29 +155,31 @@ void mousePressed()
   if (mouseX > width - (width/3.0f) && mouseX < width && mouseY > height - border && mouseY < height - border/2.0f)
   {
     space = true;
-    sound.play();
+    Bcol = false;
+    takeOff.play();
   }
   
   if (mouseX > width - (width/3.0f) && mouseX < width && mouseY > height - border/2.0f && mouseY < height)
   {
     space = false;
-    sound.play();
+    Bcol = true;
+    landing.play();
   }
 }
 
-void keyPressed()
-{
-  println("Key pressed");
-  keys[keyCode] = true;
-}
+//void keyPressed()
+//{
+//  println("Key pressed");
+//  keys[keyCode] = true;
+//}
 
-void keyReleased()
-{
-  println("Key released");
-  keys[keyCode] = false;
-}
+//void keyReleased()
+//{
+//  println("Key released");
+//  keys[keyCode] = false;
+//}
 
-boolean checkKey(int k)
-{
-  return keys[Character.toLowerCase(k)] || keys[Character.toUpperCase(k)]; 
-}
+//boolean checkKey(int k)
+//{
+//  return keys[Character.toLowerCase(k)] || keys[Character.toUpperCase(k)]; 
+//}
