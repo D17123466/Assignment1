@@ -16,7 +16,8 @@ SoundFile sound;
 
 void setup()
 {
-  fullScreen();
+  size(500, 500);
+  //fullScreen();
  
   for (int i = 0; i < qtyStar; i ++)
   {
@@ -106,8 +107,8 @@ void drawButton()
   fill(0, 255, 0);
   rect(width - border, height - border/2.0f, width - border/2.0f, height - border/4.0f);
   fill(255);
-  textAlign(CENTER);
-  text("Star", (width - border/1.3f), (height - border/4.0f) - 15 );
+  textAlign(CENTER, CENTER);
+  text("Ship", (width - border/1.3f), (height - border/4.0f) - 15 );
 }
 
 void mousePressed()
