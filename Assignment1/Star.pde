@@ -5,7 +5,7 @@ class Star
   float speed;
   float radius;
   
-  Star(float border)
+  Star()
   {
     xpos = random(width);
     ypos = random(border / 2, height - (border - 0.1f));

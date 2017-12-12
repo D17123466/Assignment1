@@ -2,7 +2,10 @@ import processing.sound.*;
 
 float border = height * 1.5f;
 int qtyStar = 50;
+int qtyMeteor = 20;
+
 Star myStar[] = new Star[qtyStar];
+Meteor myMeteor[] = new Meteor[qtyStar];
 
 Radar radar;
 
@@ -13,23 +16,38 @@ Control control;
 // check ship take-off / landing
 boolean space = false;
 
+// chosse backgrounds
+boolean BG = true;
+
+
 // check take-off / landing button
 boolean Bcol = true;
+
+// chnage planets
+boolean planet = true;
 
 // sound files
 SoundFile landing; 
 SoundFile takeOff; 
 
+//ArrayList<Planet> planets = new ArrayList<Planet>();
+
+int mode = 0;
+
 void setup()
 {
-  //size(600, 600);
-  fullScreen();
- 
+  size(600, 600);
+  //fullScreen();
+  
   for (int i = 0; i < qtyStar; i ++)
   {
-    myStar[i] = new Star(border);
+    myStar[i] = new Star();
   }
-  
+  for (int i = 0; i < qtyMeteor; i ++)
+  {
+    myMeteor[i] = new Meteor();
+  }
+
   radar = new Radar(width/6.0f, height - border/2.0f);
   
   control = new Control(border);
@@ -43,7 +61,6 @@ void draw()
   background(0);
   //stroke(0, 255, 0);
   //fill(255);
-
 
   if (space == true)
   {
@@ -59,18 +76,26 @@ void draw()
   
   //drawGrid();
   drawAbove();
+  drawBackground();
   drawBelow();
   drawShipButton();
   
-  //radar.render();
-  //radar.update();
-  
-  for (int i = 0; i < qtyStar; i ++)
+  if (BG)
   {
-    myStar[i].display();
-    myStar[i].move();
+    for (int i = 0; i < qtyStar; i ++)
+    {
+      myStar[i].display();
+      myStar[i].move();
+    }
   }
-  
+  else
+  {
+    for (int i = 0; i < qtyMeteor; i ++)
+    {
+      myMeteor[i].display();
+      myMeteor[i].move();
+    }
+  }
 }
 
 void drawGrid()
@@ -94,7 +119,7 @@ void drawAbove()
   stroke(0, 255, 0);
   strokeWeight(2);
   fill(0, 255, 0, 20);
-  rect(0, 0, width, border / 2);
+  rect(0, 0, width, border / 2.0f);
 }
 
 void drawBelow()
@@ -145,13 +170,19 @@ void drawShipButton()
   
 }
 
+void drawBackground()
+{
+  textAlign(CENTER);
+  textSize(15);
+  fill(0, 255, 0);
+  text("Stars", width/4.0f, border/4.0f);
+  text("Meteor", width/2.0f + width/4.0f, border/4.0f); 
+  stroke(0, 255, 0);
+  line(width/2.0f, 0, width/2.0f, border/2.0f);
+}
+
 void mousePressed()
 {
-  //if (mouseX > width - border && mouseX < width - border/2.0f && mouseY > height - border/2.0f && mouseY < height - border/4.0f)
-  //{
-  //  space = true;
-  //  sound.play();
-  //}
   if (mouseX > width - (width/3.0f) && mouseX < width && mouseY > height - border && mouseY < height - border/2.0f)
   {
     space = true;
@@ -165,21 +196,14 @@ void mousePressed()
     Bcol = true;
     landing.play();
   }
+  
+  if (mouseX > 0 && mouseX < width/2.0f && mouseY > 0 && mouseY < border/2.0f)
+  {
+    BG = true;
+  }
+  
+  if (mouseX > width/2.0f && mouseX < width && mouseY > 0 && mouseY < border/2.0f)
+  {
+    BG = false;
+  }
 }
-
-//void keyPressed()
-//{
-//  println("Key pressed");
-//  keys[keyCode] = true;
-//}
-
-//void keyReleased()
-//{
-//  println("Key released");
-//  keys[keyCode] = false;
-//}
-
-//boolean checkKey(int k)
-//{
-//  return keys[Character.toLowerCase(k)] || keys[Character.toUpperCase(k)]; 
-//}
