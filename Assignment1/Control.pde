@@ -189,8 +189,10 @@ class Control
            
   void shipdisplay()
   {
+    noStroke();
     textAlign(CENTER, CENTER);
     textSize(15);
+    //stroke(0);
     text("Coordinate x of ship =  " + int(location.x), width/2.0f, height - border/1.5f);
     text("Coordinate y of ship =  " + int(location.y), width/2.0f, height - border/2.5f);
    }

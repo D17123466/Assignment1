@@ -9,9 +9,13 @@ class Star
   {
     xpos = random(width);
     ypos = random(border / 2, height - (border - 0.1f));
-    speed = random(1, 2);
+    speed = random(0.5f, 1.5f);
     radius = random(3, 5);
   }
+  //Star()
+  //{
+  //  super();  
+  //}
   
   void display()
   {
@@ -25,47 +29,11 @@ class Star
   
   void move()
   {
-    //if (checkKey('a'))
-    //{
-    //  xpos += speed;
-    //  if (xpos > width)
-    //  {
-    //    xpos = 0;
-    //  }
-    //}
-    
-    //if (checkKey('d'))
-    //{
-    //  xpos -= speed;
-    //  if (xpos < 0)
-    //  {
-    //    xpos = width;
-    //  }
-    //}
-    
-    //if (checkKey('s'))
-    //{
-    //  ypos -= speed;
-    //  if (ypos < border / 2)
-    //  {
-    //    ypos = height - border;
-    //  }
-    //}
-    
-    //if (checkKey('w'))
-    //{
-    //  ypos += speed;
-    //  if (ypos >height - border)
-    //  {
-    //    ypos = border / 2;
-    //  }
-    //}
-    
     xpos += speed;
     if (xpos > width)
     {
       xpos = 0;
     }
   }
-  
+ 
 }
