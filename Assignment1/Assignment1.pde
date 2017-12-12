@@ -16,7 +16,7 @@ SoundFile sound;
 
 void setup()
 {
-  size(500, 500);
+  size(600, 600);
   //fullScreen();
  
   for (int i = 0; i < qtyStar; i ++)
@@ -37,7 +37,18 @@ void draw()
   stroke(0, 255, 0);
   fill(255);
 
-  drawGrid();
+
+  if (space == true)
+  {
+    drawGrid();
+    control.targetPoint();
+    control.targetdisplay();
+    control.shipdisplay();
+    control.update();
+    control.mapdisplay();
+  }
+  
+  //drawGrid();
   drawAbove();
   drawBelow();
   drawButton();

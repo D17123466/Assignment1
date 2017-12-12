@@ -112,7 +112,7 @@ class Control
       
       // body
       fill(255);
-      rect(0, 0, 40, 30, 7);    
+      rect(0, 0, 40, 30);    
       triangle(20, -15, 40, 0, 20, 15);
       
       // legs(left)
@@ -152,7 +152,7 @@ class Control
       
       // body
       fill(255);
-      rect(0, 0, 40, 30, 7);
+      rect(0, 0, 40, 30);
       triangle(20, -15, 40, 0, 20, 15);
       
       // legs(left)
