@@ -26,9 +26,10 @@ How to use:
       - then there will be no space-ship
       
       
-    also, it can be controled by user
+    also, it can be controlled by user
     
-      - use mouse click
+      - use mouse click for location that you want to send a space-ship
+      
       
       
     background can be chose by click above buttons
