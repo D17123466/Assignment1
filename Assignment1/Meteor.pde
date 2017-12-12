@@ -19,7 +19,7 @@ class Meteor
     pushMatrix();
     translate(xpos, ypos);
     fill(255, 255, 0);
-    ellipse(0, 0, radius*1.5f, radius*1.5f);
+    ellipse(0, 0, radius*2.0f, radius*2.0f);
     fill(255, 0, 0);
     ellipse(0, 0, radius, radius);
     popMatrix();
@@ -28,9 +28,14 @@ class Meteor
   void move()
   {
     xpos += speed;
+    ypos += speed;
     if (xpos > width)
     {
       xpos = 0;
+    }   
+    if (ypos > height - border)
+    {
+      ypos = border/2.0f;
     }
   }
   

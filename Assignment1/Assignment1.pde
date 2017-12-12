@@ -23,6 +23,9 @@ boolean BG = true;
 // check take-off / landing button
 boolean Bcol = true;
 
+// check star / meteor button
+boolean BGcol = true;
+
 // chnage planets
 boolean planet = true;
 
@@ -64,7 +67,7 @@ void draw()
 {
   background(0);
   //stroke(0, 255, 0);
-  //fill(255);
+  fill(255);
 
   if (space == true)
   {
@@ -181,6 +184,22 @@ void drawBackground()
   fill(0, 255, 0);
   text("Stars", width/4.0f, border/4.0f);
   text("Meteor", width/2.0f + width/4.0f, border/4.0f); 
+  
+  if (BGcol)
+  {
+    fill(255, 0, 0, 20);
+    rect(0, 0, width/2.0f, border/2.0f);
+    fill(0, 255, 0, 20);
+    rect(width/2.0f, 0, width, border/2.0f);
+  }
+  else
+  {
+    fill(0, 255, 0, 20);
+    rect(0, 0, width/2.0f, border/2.0f);
+    fill(255, 0, 0, 20);
+    rect(width/2.0f, 0, width, border/2.0f);
+  }
+  
   stroke(0, 255, 0);
   line(width/2.0f, 0, width/2.0f, border/2.0f);
 }
@@ -204,10 +223,12 @@ void mousePressed()
   if (mouseX > 0 && mouseX < width/2.0f && mouseY > 0 && mouseY < border/2.0f)
   {
     BG = true;
+    BGcol = true;
   }
   
   if (mouseX > width/2.0f && mouseX < width && mouseY > 0 && mouseY < border/2.0f)
   {
     BG = false;
+    BGcol = false;
   }
 }
