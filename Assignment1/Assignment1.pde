@@ -29,6 +29,7 @@ boolean planet = true;
 // sound files
 SoundFile landing; 
 SoundFile takeOff; 
+SoundFile spaceSound;
 
 //ArrayList<Planet> planets = new ArrayList<Planet>();
 
@@ -54,6 +55,9 @@ void setup()
   
   landing = new SoundFile(this, "UFOLanding.mp3");
   takeOff = new SoundFile(this, "UFOTakeOff.mp3");
+  spaceSound = new SoundFile(this, "space.mp3");
+  
+  spaceSound.play();
 }
 
 void draw()
