@@ -103,12 +103,17 @@ void drawBelow()
 
 void drawButton()
 {
+  ////stroke(255);
+  //fill(0, 255, 0);
+  //rect(width - border, height - border/2.0f, width - border/2.0f, height - border/4.0f);
+  //fill(255);
+  ////textAlign(CENTER, CENTER);
+  //text("Ship", (width - border/1.3f), (height - border/4.0f) - 15 );
+  
+  fill(0, 255, 0, 20);
+  rect(width - width/3.0f, height - border, width, height);
   stroke(255);
-  fill(0, 255, 0);
-  rect(width - border, height - border/2.0f, width - border/2.0f, height - border/4.0f);
-  fill(255);
-  textAlign(CENTER, CENTER);
-  text("Ship", (width - border/1.3f), (height - border/4.0f) - 15 );
+  line(width - (width/3.0f), height - border/2.0f, width, height - border/2.0f);
 }
 
 void mousePressed()
