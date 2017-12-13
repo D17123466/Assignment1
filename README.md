@@ -8,10 +8,20 @@ youtube link : https://youtu.be/zkVRNkUrUto
 features
 
     - control a space-ship
+        
+        - used mousePressed
     
     - check mini-map for a space-ship
     
+        - used PVector
+    
     - choose background
+    
+        - used classes
+    
+    - space sound
+    
+        - used sound library
 
 
 How to use:
