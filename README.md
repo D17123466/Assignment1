@@ -1,4 +1,4 @@
-n# Assignment1
+# Assignment1
 My Assignment
 
 
@@ -41,8 +41,7 @@ How to use:
       - use mouse click for location that you want to send a space-ship
       
       
-      
-    background can be chose by click above buttons
+    background can be chosen by click above buttons
     
     there are two background
     
